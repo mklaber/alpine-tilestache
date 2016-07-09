@@ -32,5 +32,12 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY app.ini /app.ini
 COPY start.sh /start.sh
 
+RUN mkdir /data \
+	&& chown -R nginx:nginx /data
+VOLUME [/data/terrain]
+VOLUME [/data/tilesets]
+
+#RUN chown -R nginx:nginx /var/log/nginx
+
 ENTRYPOINT ["/start.sh"]
 
