@@ -1,6 +1,6 @@
 # [Alpine OS](https://hub.docker.com/_/alpine/) running [Tilestache](http://tilestache.org/)
 
-Image size: 78.75 MB
+Image size: 71.75 MB MB
 
 This image is used to run Tilestache with help of nginx and uwsgi. It is expected that you have one folder in which you have mbtiles and test.cfg Tilestache configuration file.
 It was only tested with mbtiles file. To use postgresql, mapnik etc. you would need to install additional packages. Paths to tilesets in test.cfg should be like all the files are in /app/ folder since this is path inside docker.
