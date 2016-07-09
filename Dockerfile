@@ -7,9 +7,7 @@ MAINTAINER Marko Burjek <s0mebody.slo@gmail.com>
 RUN apk add --update \
 	py-pillow \
 	py-pip \
-	nginx uwsgi uwsgi-python &&   rm -rf /var/cache/apk/*
-
-RUN pip install -U pip setuptools && pip install TileStache==1.50.1
+	nginx uwsgi uwsgi-python &&   rm -rf /var/cache/apk/* && pip install -U pip setuptools && pip install TileStache==1.50.1
 
 
 # application folder
