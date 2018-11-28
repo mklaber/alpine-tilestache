@@ -1,17 +1,21 @@
-FROM iron/python:2
+FROM python:3
 
-MAINTAINER Marko Burjek <s0mebody.slo@gmail.com>
+# MAINTAINER Marko Burjek <s0mebody.slo@gmail.com>
 
-#UWSGI & Nginx based on jazzdd86/alpine-flask
 
-RUN apk add --update \
-	py-pillow \
-	py-pip \
-	nginx uwsgi uwsgi-python &&   rm -rf /var/cache/apk/* && pip install -U pip setuptools && pip install TileStache==1.50.1
+RUN set -ex; \
+	apt-get update; \
+	apt-get install -y --no-install-recommends \
+	python-pil \
+	nginx uwsgi && \
+	pip install -U pip setuptools && pip install uwsgi && pip install numpy Pillow && pip install TileStache==1.51.13
 
 
 # application folder
 ENV APP_DIR /app
+
+RUN groupadd --gid 1000 nginx \
+	&& useradd --uid 1000 --gid nginx --shell /bin/bash --create-home nginx
 
 # app dir
 RUN mkdir ${APP_DIR} \
